@@ -1,6 +1,7 @@
 import React, {useState} from "react";
-import TodoItem from "./components/ToDoItem";
-import TodoForm from "./components/TodoForm";
+import TodoItem from "./components/TodoItem/ToDoItem";
+import TodoForm from "./components/TodoForm/TodoForm";
+import "./App.css"
 
 function App() {
 
@@ -20,12 +21,16 @@ function App() {
 
 // template
   return (
-  <div>
-    <h1>My todo list</h1>
-    {todos.map((todo, index) => (
-      <TodoItem todo={todo} key={index} />
-    ))} 
-    <TodoForm addTodo={addTodo} />
+  <div className="app">
+    <div className="todo-list">
+      <div>
+        <h1>My todo list</h1>
+        {todos.map((todo, index) => (
+          <TodoItem todo={todo} key={index} />
+        ))} 
+        <TodoForm addTodo={addTodo} />
+      </div>
+    </div>
   </div>
 );
 }
