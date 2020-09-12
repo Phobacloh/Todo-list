@@ -1,16 +1,33 @@
-import React from "react";
+import React, {useState} from "react";
 import TodoItem from "./components/ToDoItem";
+import TodoForm from "./components/TodoForm";
 
 function App() {
-    return (
-    <div>
-      <h1>My todo list</h1>
-      <TodoItem todo="Finish Plus project"/> 
-      <TodoItem todo="Hair cut"/> 
-      <TodoItem todo="Learn to break dance"/> 
-      <TodoItem todo="Backflip"/>    
-    </div>
-  );
+
+  // variables
+  const [todos, setTodos] = useState([
+    "Finish plus project",
+    "Learn to breakdance",
+    "Backflip",
+  ]);
+
+// methods
+
+  const addTodo = (text) => {
+    const newtodos = [...todos, text];
+    setTodos(newtodos);
+  }
+
+// template
+  return (
+  <div>
+    <h1>My todo list</h1>
+    {todos.map((todo, index) => (
+      <TodoItem todo={todo} key={index} />
+    ))} 
+    <TodoForm addTodo={addTodo} />
+  </div>
+);
 }
 
 export default App;
