@@ -25,6 +25,12 @@ function App() {
     setTodos(newTodos);
   }
 
+  const undoToDo = (index) => {
+    const newTodos = [...todos];
+    newTodos[index].isCompleted = false
+    setTodos(newTodos);
+  }
+
   const removeToDo = (index) => {
     const newTodos = [...todos];
     newTodos.splice(index, 1);
@@ -41,6 +47,7 @@ function App() {
           key={index} 
           index={index} 
           completeToDo={completeToDo}
+          undoToDo={undoToDo}
           removeToDo={removeToDo} 
           />
         ))} 
